@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette terracotta - cohérence avec l'app mobile */
+  --color-primary: #9D3D1B;
+  --color-primary-container: #BE5530;
+  --color-on-primary-container: #FFFBFF;
+
+  /* Vert forêt - rassemblements/événements */
+  --color-secondary: #2D6A4F;
+  --color-secondary-container: #40916C;
+
+  /* Surfaces chaudes */
+  --color-background: #FFFBF7;
+  --color-surface: #FFF4EC;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #FBF1E8;
+  --color-surface-container: #F7EADC;
+  --color-surface-container-high: #F1E1D0;
+  --color-surface-container-highest: #EBD7C2;
+
+  /* Texte */
+  --color-text: #1F1410;
+  --color-text-secondary: #6B5B54;
+  --color-on-primary: #FFFFFF;
+  --color-outline: #8B7367;
+  --color-outline-variant: #D8C3B5;
+
+  /* Statuts */
+  --color-success: #2D6A4F;
+  --color-warning: #FF9F43;
+  --color-error: #C73E1D;
+
+  /* Fonts */
+  --font-heading: var(--font-jakarta);
+  --font-body: var(--font-inter);
+  --font-sans: var(--font-inter);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Animation onde radio (référence à l'app) */
+@keyframes radio-wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.radio-wave {
+  animation: radio-wave 3s ease-out infinite;
+}
+
+/* Pattern d'ondes en arrière-plan */
+.waves-bg {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(157, 61, 27, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(45, 106, 79, 0.03) 0%, transparent 30%);
+}
