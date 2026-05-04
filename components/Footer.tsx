@@ -36,15 +36,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/balades"
-                  className="text-sm text-text-secondary hover:text-primary transition-colors"
-                >
-                  Voir les balades
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#download"
+                  href="/#download"
                   className="text-sm text-text-secondary hover:text-primary transition-colors"
                 >
                   Télécharger

@@ -98,20 +98,12 @@ export default function CommentCaMarche() {
             Téléchargez l&apos;application et rejoignez les premières balades de
             votre quartier.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/#download"
-              className="px-7 py-4 rounded-full bg-primary text-on-primary font-semibold shadow-lg shadow-primary/20 hover:bg-primary-container transition-colors"
-            >
-              Télécharger l&apos;application
-            </Link>
-            <Link
-              href="/balades"
-              className="px-7 py-4 rounded-full bg-surface-container-lowest border border-outline-variant text-text font-semibold hover:bg-surface-container transition-colors"
-            >
-              Voir les balades
-            </Link>
-          </div>
+          <Link
+            href="/#download"
+            className="inline-block px-7 py-4 rounded-full bg-primary text-on-primary font-semibold shadow-lg shadow-primary/20 hover:bg-primary-container transition-colors"
+          >
+            Télécharger l&apos;application
+          </Link>
         </div>
       </section>
     </>

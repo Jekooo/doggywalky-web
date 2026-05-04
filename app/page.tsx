@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PhoneShowcase } from "@/components/PhoneShowcase";
 
 export default function Home() {
   return (
@@ -37,10 +38,10 @@ export default function Home() {
                   Télécharger l&apos;application
                 </Link>
                 <Link
-                  href="/balades"
+                  href="/comment-ca-marche"
                   className="px-7 py-4 rounded-full bg-surface-container-low border border-outline-variant text-text font-semibold text-base hover:bg-surface-container transition-colors text-center"
                 >
-                  Voir les balades
+                  Comment ça marche
                 </Link>
               </div>
 
@@ -60,33 +61,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative hidden md:block">
-              <div className="relative aspect-[9/16] max-w-sm mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-[3rem] blur-3xl"></div>
-                <div className="relative bg-surface-container-high rounded-[3rem] border-8 border-text/90 p-3 shadow-2xl">
-                  <div className="bg-background rounded-[2.2rem] aspect-[9/19] flex flex-col items-center justify-center p-8">
-                    <div className="w-20 h-20 rounded-3xl bg-primary flex items-center justify-center mb-4 shadow-lg">
-                      <svg
-                        className="w-10 h-10 text-on-primary"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <ellipse cx="6" cy="9" rx="1.8" ry="2.4" />
-                        <ellipse cx="10.5" cy="6" rx="1.8" ry="2.4" />
-                        <ellipse cx="13.5" cy="6" rx="1.8" ry="2.4" />
-                        <ellipse cx="18" cy="9" rx="1.8" ry="2.4" />
-                        <path d="M12 11.5c-2.8 0-5 2.2-5 4.5 0 1.7 1.3 3 3 3 1 0 1.5-.5 2-.5s1 .5 2 .5c1.7 0 3-1.3 3-3 0-2.3-2.2-4.5-5-4.5z" />
-                      </svg>
-                    </div>
-                    <p className="font-heading font-extrabold text-2xl text-text">
-                      Doggy Walky
-                    </p>
-                    <p className="text-sm text-text-secondary mt-2">
-                      Aperçu de l&apos;app
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative hidden md:block pb-12">
+              <PhoneShowcase />
             </div>
           </div>
         </div>
@@ -138,6 +114,7 @@ export default function Home() {
               title="Badges & défis"
               description="Gagnez des badges en participant à des balades et complétez des défis avec votre chien."
               accent="primary"
+              comingSoon
             />
             <FeatureCard
               icon="👥"
@@ -248,11 +225,13 @@ function FeatureCard({
   title,
   description,
   accent,
+  comingSoon,
 }: {
   icon: string;
   title: string;
   description: string;
   accent: "primary" | "secondary";
+  comingSoon?: boolean;
 }) {
   const accentBg = accent === "primary" ? "bg-primary/10" : "bg-secondary/10";
   const accentBorder =
@@ -260,17 +239,37 @@ function FeatureCard({
 
   return (
     <div
-      className={`p-7 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 border-l-4 ${accentBorder} hover:shadow-lg transition-shadow`}
+      className={`relative p-7 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 border-l-4 ${accentBorder} hover:shadow-lg transition-shadow`}
     >
-      <div
-        className={`w-14 h-14 rounded-2xl ${accentBg} flex items-center justify-center text-3xl mb-5`}
-      >
-        {icon}
+      {/* Badge "Bientôt" en haut à droite */}
+      {comingSoon && (
+        <div className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-on-primary text-[11px] font-bold uppercase tracking-wide shadow-md">
+          <svg
+            className="w-3 h-3"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+              clipRule="evenodd"
+            />
+          </svg>
+          Bientôt
+        </div>
+      )}
+
+      <div className={comingSoon ? "opacity-50" : ""}>
+        <div
+          className={`w-14 h-14 rounded-2xl ${accentBg} flex items-center justify-center text-3xl mb-5`}
+        >
+          {icon}
+        </div>
+        <h3 className="font-heading font-extrabold text-xl text-text mb-2">
+          {title}
+        </h3>
+        <p className="text-text-secondary leading-relaxed">{description}</p>
       </div>
-      <h3 className="font-heading font-extrabold text-xl text-text mb-2">
-        {title}
-      </h3>
-      <p className="text-text-secondary leading-relaxed">{description}</p>
     </div>
   );
 }
