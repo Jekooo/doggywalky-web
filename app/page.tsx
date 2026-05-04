@@ -56,7 +56,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckIcon />
-                  <span>iOS &amp; Android</span>
+                  <span>Android (iOS bientôt)</span>
                 </div>
               </div>
             </div>
